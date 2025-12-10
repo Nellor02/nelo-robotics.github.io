@@ -5,137 +5,292 @@
   <title>Nelo Matse (馬尼駱) | Engineering & AI Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    :root {
+      --bg: #f3f5f7;
+      --bg-alt: #ffffff;
+      --accent: #0b7285;
+      --accent-soft: #e3f6f9;
+      --text-main: #222;
+      --text-muted: #666;
+      --border-soft: #dde3ea;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background: #f5f5f5;
-      color: #222;
+      background: radial-gradient(circle at top left, #ecf9ff, #f7f7f7 55%, #edf4ff);
+      color: var(--text-main);
     }
 
-    .container {
-      max-width: 1100px;
+    a {
+      color: var(--accent);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page-wrapper {
+      max-width: 1180px;
       margin: 0 auto;
       padding: 1.5rem;
     }
 
+    /* HERO / HEADER */
+
     header {
+      background: linear-gradient(135deg, #0b7285, #1971c2);
+      color: #fff;
+      border-radius: 18px;
+      padding: 2.4rem 1.8rem 2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 14px 30px rgba(12, 74, 110, 0.23);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.25), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      padding: 2.5rem 1rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     header h1 {
-      margin-bottom: 0.3rem;
-      font-size: 2.1rem;
+      margin: 0 0 0.3rem;
+      font-size: 2.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    header .hero-subname {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 0.6rem;
     }
 
     header p.tagline {
       font-size: 1.05rem;
-      color: #555;
-      margin-top: 0;
-      margin-bottom: 0.5rem;
+      margin: 0.4rem 0 0.8rem;
+      opacity: 0.95;
+    }
+
+    header p.links {
+      margin: 0.6rem 0 0;
+      font-size: 0.9rem;
     }
 
     header p.links a {
+      color: #e3fbff;
+      text-decoration: none;
+      margin: 0 0.35rem;
       word-break: break-all;
     }
 
-    nav {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    nav a {
-      margin: 0 0.7rem;
-      text-decoration: none;
-      font-size: 0.98rem;
-      color: #444;
-    }
-
-    nav a:hover {
+    header p.links a:hover {
       text-decoration: underline;
     }
 
+    /* NAV */
+
+    nav {
+      margin: 0 auto 2rem;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    nav .nav-inner {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.85);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    nav a {
+      margin: 0 0.1rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #334155;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+
     section {
-      background: #fff;
-      padding: 1.8rem 1.8rem 1.6rem;
-      margin-bottom: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      background: var(--bg-alt);
+      padding: 1.9rem 1.9rem 1.6rem;
+      margin-bottom: 1.6rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.05);
+      border: 1px solid var(--border-soft);
     }
 
     section h2 {
       margin-top: 0;
-      border-bottom: 1px solid #eee;
       padding-bottom: 0.6rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.7rem;
       font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid #edf1f5;
+    }
+
+    section h2::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      display: inline-block;
     }
 
     .section-subtitle {
-      margin-top: -0.4rem;
+      margin-top: -0.3rem;
       margin-bottom: 0.9rem;
       font-size: 0.95rem;
-      color: #666;
+      color: var(--text-muted);
     }
 
     .two-column {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 1.8rem;
+      gap: 1.7rem;
     }
+
+    .two-column ul {
+      margin-top: 0.1rem;
+    }
+
+    /* SKILLS */
+
+    .skills-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .skills-group h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      color: #1f2933;
+    }
+
+    .skills-group ul {
+      margin-top: 0.15rem;
+      padding-left: 1.1rem;
+    }
+
+    .skills-group li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* PROJECTS */
 
     .project {
       margin-bottom: 1.4rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px dashed #e3e7ee;
+    }
+
+    .project:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
     }
 
     .project h3 {
       margin-bottom: 0.2rem;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
     .project .meta {
-      font-size: 0.85rem;
-      color: #666;
+      font-size: 0.83rem;
+      color: var(--text-muted);
       margin-bottom: 0.35rem;
     }
 
     .badge {
       display: inline-block;
-      background: #eee;
+      background: var(--accent-soft);
+      color: #0f5260;
       border-radius: 999px;
-      padding: 0.15rem 0.6rem;
+      padding: 0.18rem 0.7rem;
       font-size: 0.75rem;
       margin-right: 0.3rem;
       margin-bottom: 0.25rem;
+      border: 1px solid rgba(11, 114, 133, 0.15);
     }
 
-    ul {
-      padding-left: 1.2rem;
+    .project ul {
       margin-top: 0.3rem;
     }
 
-    .skills-groups {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.2rem;
+    .project-links a {
+      font-size: 0.88rem;
+      margin-right: 0.6rem;
     }
 
-    .skills-groups h3 {
-      margin: 0 0 0.3rem;
-      font-size: 1rem;
+    /* COMPETITIONS */
+
+    #competitions ul {
+      list-style: none;
+      padding-left: 0;
     }
 
-    .skills-groups ul {
+    #competitions li {
+      margin-bottom: 0.9rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--accent-soft);
+    }
+
+    #competitions strong {
+      display: inline-block;
+      margin-bottom: 0.1rem;
+    }
+
+    /* REPORTS */
+
+    #reports ul {
       margin-top: 0.2rem;
+    }
+
+    /* CONTACT & FOOTER */
+
+    #contact p {
+      margin-top: 0.3rem;
     }
 
     footer {
       text-align: center;
       font-size: 0.85rem;
-      color: #777;
-      padding: 2rem 0 1.5rem;
+      color: #6b7280;
+      padding: 2rem 0 1.7rem;
     }
 
     @media (max-width: 768px) {
@@ -145,40 +300,52 @@
       .skills-groups {
         grid-template-columns: 1fr;
       }
-      nav a {
-        display: inline-block;
-        margin: 0.3rem 0.5rem;
+      nav .nav-inner {
+        border-radius: 14px;
+      }
+      header {
+        padding: 2rem 1.3rem 1.7rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="page-wrapper">
+    <!-- HERO -->
     <header>
-      <h1>Nelo Matse (馬尼駱)</h1>
-      <p class="tagline">Robotics, Autonomous Systems & Computer Vision</p>
-      <p class="links">
-        <a href="mailto:nellorchamp@gmail.com">nellorchamp@gmail.com</a> ·
-        <a href="https://github.com/Nellor02" target="_blank">github.com/Nellor02</a> ·
-        <a href="https://www.linkedin.com/in/nelo-matse" target="_blank">linkedin.com/in/nelo-matse</a>
-      </p>
+      <div class="hero-inner">
+        <h1>Nelo Matse (馬尼駱)</h1>
+        <div class="hero-subname">Mechanical Engineering · Intelligent Robotics · Kun Shan University</div>
+        <p class="tagline">
+          Robotics, autonomous systems, and computer vision — building full-stack intelligent machines
+          from perception to actuation.
+        </p>
+        <p class="links">
+          <a href="mailto:nellorchamp@gmail.com">nellorchamp@gmail.com</a> ·
+          <a href="https://github.com/Nellor02" target="_blank">github.com/Nellor02</a> ·
+          <a href="https://www.linkedin.com/in/nelo-matse" target="_blank">linkedin.com/in/nelo-matse</a>
+        </p>
+      </div>
     </header>
 
+    <!-- NAV -->
     <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#competitions">Competitions</a>
-      <a href="#reports">Reports</a>
-      <a href="#contact">Contact</a>
+      <div class="nav-inner">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#competitions">Competitions</a>
+        <a href="#reports">Reports</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
 
     <!-- ABOUT -->
     <section id="about">
       <h2>About</h2>
       <p class="section-subtitle">
-        Engineering student building full-stack intelligent machines that connect mechanical design, sensing,
-        control, and AI-based perception.
+        Final-year engineering student with a double major in Intelligent Robotics, focusing on ROS-based autonomous systems,
+        computer vision, and tightly integrated hardware–software design.
       </p>
       <div class="two-column">
         <div>
@@ -195,9 +362,8 @@
             problem using physics-based trajectory modeling and BLDC motor control.
           </p>
           <p>
-            My goal is to pursue graduate research in <strong>robotics</strong>, <strong>vision-based control</strong>,
-            and <strong>intelligent manufacturing</strong>, continuing to integrate sensing, decision-making, and
-            robust hardware into practical autonomous platforms.
+            I am preparing to pursue a Master’s degree in engineering, with research interests in
+            <strong>robotics</strong>, <strong>vision-based control</strong>, and <strong>intelligent manufacturing</strong>.
           </p>
         </div>
         <div>
@@ -219,13 +385,13 @@
       </p>
 
       <div class="skills-groups">
-        <div>
+        <div class="skills-group">
           <h3>Programming & Software</h3>
           <ul>
             <li>Python, C/C++, MATLAB</li>
             <li>ROS Noetic (multi-node systems, RViz, roslaunch)</li>
             <li>Gazebo simulation (r1_rover, LiDAR plugins, <code>/cmd_vel</code> control)</li>
-            <li>PCL for LiDAR processing (downsampling, ROI selection, obstacle extraction)</li>
+            <li>PCL for LiDAR processing (downsampling, ROI, obstacle extraction)</li>
             <li>Git, Linux, VS Code, LaTeX</li>
           </ul>
 
@@ -238,7 +404,7 @@
           </ul>
         </div>
 
-        <div>
+        <div class="skills-group">
           <h3>Autonomous Systems & Robotics</h3>
           <ul>
             <li>ROS–Pixhawk–MAVROS integration (MAVLink communication)</li>
@@ -267,7 +433,6 @@
     <section id="projects">
       <h2>Selected Projects</h2>
 
-      <!-- Autonomous Vehicle / ATV -->
       <div class="project">
         <h3>Autonomous Unmanned ATV – ROS · Pixhawk · PLC Integration</h3>
         <div class="meta">
@@ -286,17 +451,15 @@
           <li>Implemented ROS decision nodes that generate steering and speed commands based on LiDAR geometry.</li>
           <li>Used MAVROS to send RC Override PWM commands to Pixhawk, enabling real-time control while preserving AUTO missions.</li>
           <li>Designed a hardware chain (Pixhawk PWM → Arduino measurement → DAC voltage → PLC) to drive industrial AC servo motors.</li>
-          <li>Validated behavior in Gazebo using the r1_rover model before deploying to the real ATV platform.</li>
+          <li>Verified algorithms in Gazebo (r1_rover) before deploying to the real ATV platform.</li>
         </ul>
-        <p>
-          <!-- Replace '#' with your actual links -->
-          <a href="#" target="_blank">Code (GitHub)</a> ·
-          <a href="#" target="_blank">Demo Video</a> ·
+        <p class="project-links">
+          <a href="#" target="_blank">Code (GitHub)</a>
+          <a href="#" target="_blank">Demo Video</a>
           <a href="#" target="_blank">Technical Report</a>
         </p>
       </div>
 
-      <!-- Baseball Launcher -->
       <div class="project">
         <h3>Autonomous Baseball Pitching Robot for 3×3 Target Grid</h3>
         <div class="meta">
@@ -311,19 +474,18 @@
           This system served as the pitching platform for the TEL Robot Combat competition.
         </p>
         <ul>
-          <li>Used a Raspberry Pi Camera / Jetson Orin Nano to run YOLOv8 for grid cell localization.</li>
+          <li>Ran YOLOv8 on Raspberry Pi / Jetson Orin Nano to localize grid cells on the target board.</li>
           <li>Built a projectile model including launch velocity, drag, and spin effects to compute wheel speed and launch angle.</li>
-          <li>Controlled dual high-speed BLDC wheels (≈3000 RPM) with feedback for consistent exit velocity.</li>
+          <li>Controlled dual high-speed BLDC wheels (~3000 RPM) with feedback for consistent exit velocity.</li>
           <li>Computed angle offsets and trigger timing in real time to achieve accurate shots into specified grid cells.</li>
         </ul>
-        <p>
-          <a href="#" target="_blank">Code (GitHub)</a> ·
-          <a href="#" target="_blank">Competition Video</a> ·
+        <p class="project-links">
+          <a href="#" target="_blank">Code (GitHub)</a>
+          <a href="#" target="_blank">Competition Video</a>
           <a href="#" target="_blank">Launcher Report</a>
         </p>
       </div>
 
-      <!-- TEL Combat Robot / Kiwi Drive -->
       <div class="project">
         <h3>Robot Combat System – TEL Robot Combat 2025 (Kiwi Drive Platform)</h3>
         <div class="meta">
@@ -338,10 +500,10 @@
         <ul>
           <li>Implemented Kiwi-drive kinematics for omnidirectional movement and rapid reorientation.</li>
           <li>Integrated sensors and control loops for precise position control under dynamic competition conditions.</li>
-          <li>Collaborated in a multidisciplinary team; responsible for motion control and systems integration.</li>
+          <li>Collaborated in a multidisciplinary team and took responsibility for motion control and systems integration.</li>
         </ul>
-        <p>
-          <a href="#" target="_blank">Code (GitHub)</a> ·
+        <p class="project-links">
+          <a href="#" target="_blank">Code (GitHub)</a>
           <a href="#" target="_blank">Robot Demo Video</a>
         </p>
       </div>
@@ -375,8 +537,8 @@
         <li><a href="reports/launcher_report.pdf" target="_blank">Projectile Modeling and Control of a Baseball Launcher</a></li>
         <li><a href="reports/vision_system_report.pdf" target="_blank">Vision-Based Target Detection for Autonomous Pitching</a></li>
       </ul>
-      <p style="font-size:0.9rem;color:#666;">
-        (Upload your PDFs into a <code>reports/</code> folder in this repository and ensure the filenames above match.)
+      <p class="section-subtitle">
+        Upload your PDFs into a <code>reports/</code> folder in this repository and ensure the filenames above match.
       </p>
     </section>
 
