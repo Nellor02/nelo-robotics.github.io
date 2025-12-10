@@ -15,8 +15,22 @@
       --border-soft: #dde3ea;
     }
 
+    [data-theme="dark"] {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --accent: #22b8cf;
+      --accent-soft: #073042;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+    }
+
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -26,6 +40,10 @@
       line-height: 1.6;
       background: radial-gradient(circle at top left, #ecf9ff, #f7f7f7 55%, #edf4ff);
       color: var(--text-main);
+    }
+
+    [data-theme="dark"] body {
+      background: radial-gradient(circle at top left, #020617, #020617 40%, #020617);
     }
 
     a {
@@ -55,6 +73,10 @@
       overflow: hidden;
     }
 
+    [data-theme="dark"] header {
+      background: linear-gradient(135deg, #082f49, #0b7285);
+    }
+
     header::after {
       content: "";
       position: absolute;
@@ -71,6 +93,26 @@
       margin: 0 auto;
     }
 
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.9);
+      margin-bottom: 0.9rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      background: #fff;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .profile-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+    }
+
     header h1 {
       margin: 0 0 0.3rem;
       font-size: 2.2rem;
@@ -79,7 +121,7 @@
 
     header .hero-subname {
       font-size: 0.95rem;
-      opacity: 0.85;
+      opacity: 0.9;
       margin-bottom: 0.6rem;
     }
 
@@ -118,11 +160,17 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.4rem;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       padding: 0.5rem 0.9rem;
       border-radius: 999px;
       box-shadow: 0 4px 12px rgba(15,23,42,0.08);
       backdrop-filter: blur(8px);
+      align-items: center;
+    }
+
+    [data-theme="dark"] nav .nav-inner {
+      background: rgba(15,23,42,0.95);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.65);
     }
 
     nav a {
@@ -135,9 +183,29 @@
       transition: background 0.15s, color 0.15s;
     }
 
+    [data-theme="dark"] nav a {
+      color: #e5e7eb;
+    }
+
     nav a:hover {
       background: var(--accent-soft);
       color: var(--accent);
+    }
+
+    .theme-toggle {
+      border: 0;
+      margin-left: 0.4rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background: #f3f4f6;
+      color: #0f172a;
     }
 
     /* SECTIONS */
@@ -151,6 +219,10 @@
       border: 1px solid var(--border-soft);
     }
 
+    [data-theme="dark"] section {
+      box-shadow: 0 12px 28px rgba(0,0,0,0.7);
+    }
+
     section h2 {
       margin-top: 0;
       padding-bottom: 0.6rem;
@@ -160,6 +232,10 @@
       align-items: center;
       gap: 0.5rem;
       border-bottom: 1px solid #edf1f5;
+    }
+
+    [data-theme="dark"] section h2 {
+      border-bottom-color: #111827;
     }
 
     section h2::before {
@@ -202,6 +278,10 @@
       color: #1f2933;
     }
 
+    [data-theme="dark"] .skills-group h3 {
+      color: #e5e7eb;
+    }
+
     .skills-group ul {
       margin-top: 0.15rem;
       padding-left: 1.1rem;
@@ -217,6 +297,10 @@
       margin-bottom: 1.4rem;
       padding-bottom: 1.1rem;
       border-bottom: 1px dashed #e3e7ee;
+    }
+
+    [data-theme="dark"] .project {
+      border-bottom-color: #111827;
     }
 
     .project:last-of-type {
@@ -245,6 +329,11 @@
       margin-right: 0.3rem;
       margin-bottom: 0.25rem;
       border: 1px solid rgba(11, 114, 133, 0.15);
+    }
+
+    [data-theme="dark"] .badge {
+      color: #e5f6ff;
+      border-color: rgba(148, 233, 255, 0.4);
     }
 
     .project ul {
@@ -293,6 +382,45 @@
       padding: 2rem 0 1.7rem;
     }
 
+    [data-theme="dark"] footer {
+      color: #9ca3af;
+    }
+
+    /* ANIMATIONS */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* BACK TO TOP */
+
+    .back-to-top {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.35);
+      display: none;
+      z-index: 50;
+    }
+
+    .back-to-top.show {
+      display: inline-block;
+    }
+
     @media (max-width: 768px) {
       .two-column {
         grid-template-columns: 1fr;
@@ -309,11 +437,12 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="light">
   <div class="page-wrapper">
     <!-- HERO -->
     <header>
       <div class="hero-inner">
+        <img src="assets/profile.jpg" alt="Profile Photo of Nelo Matse" class="profile-photo" />
         <h1>Nelo Matse (馬尼駱)</h1>
         <div class="hero-subname">Mechanical Engineering · Intelligent Robotics · Kun Shan University</div>
         <p class="tagline">
@@ -337,11 +466,12 @@
         <a href="#competitions">Competitions</a>
         <a href="#reports">Reports</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle">Dark mode</button>
       </div>
     </nav>
 
     <!-- ABOUT -->
-    <section id="about">
+    <section id="about" class="fade-in">
       <h2>About</h2>
       <p class="section-subtitle">
         Final-year engineering student with a double major in Intelligent Robotics, focusing on ROS-based autonomous systems,
@@ -378,7 +508,7 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills">
+    <section id="skills" class="fade-in">
       <h2>Skills</h2>
       <p class="section-subtitle">
         A combination of software, embedded, and control expertise, developed through full-system robotics projects.
@@ -430,7 +560,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
+    <section id="projects" class="fade-in">
       <h2>Selected Projects</h2>
 
       <div class="project">
@@ -510,7 +640,7 @@
     </section>
 
     <!-- COMPETITIONS -->
-    <section id="competitions">
+    <section id="competitions" class="fade-in">
       <h2>Competitions & Achievements</h2>
       <ul>
         <li>
@@ -530,7 +660,7 @@
     </section>
 
     <!-- REPORTS -->
-    <section id="reports">
+    <section id="reports" class="fade-in">
       <h2>Technical Reports & Documents</h2>
       <ul>
         <li><a href="reports/autonomous_atv.pdf" target="_blank">Autonomous Unmanned ATV – ROS · Pixhawk · PLC Integration</a></li>
@@ -543,7 +673,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" class="fade-in">
       <h2>Contact</h2>
       <p>
         The best way to reach me is by email:<br />
@@ -562,8 +692,68 @@
     </footer>
   </div>
 
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="backToTop">Top</button>
+
   <script>
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Dark / light mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const rootHtml = document.documentElement;
+
+    function setTheme(theme) {
+      rootHtml.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+      try {
+        localStorage.setItem('theme', theme);
+      } catch (e) {}
+    }
+
+    // Load stored theme if exists
+    let storedTheme;
+    try {
+      storedTheme = localStorage.getItem('theme');
+    } catch (e) {
+      storedTheme = null;
+    }
+    if (storedTheme === 'dark' || storedTheme === 'light') {
+      setTheme(storedTheme);
+    } else {
+      setTheme('light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const current = rootHtml.getAttribute('data-theme') || 'light';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
+
