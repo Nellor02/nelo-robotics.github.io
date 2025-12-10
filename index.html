@@ -345,6 +345,128 @@
       margin-right: 0.6rem;
     }
 
+    /* PROJECT GALLERY */
+
+    #gallery .section-subtitle {
+      margin-bottom: 1.2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: #020617;
+      cursor: zoom-in;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.28);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      opacity: 0.92;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.45rem 0.7rem;
+      font-size: 0.85rem;
+      color: #f9fafb;
+      background: linear-gradient(to top, rgba(15,23,42,0.9), rgba(15,23,42,0));
+    }
+
+    .gallery-tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      opacity: 0.8;
+    }
+
+    /* IMAGE MODAL */
+
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 1rem;
+    }
+
+    .image-modal.open {
+      display: flex;
+    }
+
+    .image-modal-inner {
+      max-width: 960px;
+      width: 100%;
+      max-height: 90vh;
+      background: #020617;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      border: 1px solid #1e293b;
+    }
+
+    .image-modal-img-wrap {
+      background: #000;
+    }
+
+    .image-modal img {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .image-modal-caption {
+      padding: 0.7rem 1rem 0.85rem;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .image-modal-caption span {
+      opacity: 0.9;
+    }
+
+    .image-modal-close {
+      border: none;
+      background: #ef4444;
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .image-modal-close:hover {
+      background: #b91c1c;
+    }
+
     /* COMPETITIONS */
 
     #competitions ul {
@@ -463,6 +585,7 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
         <a href="#competitions">Competitions</a>
         <a href="#reports">Reports</a>
         <a href="#contact">Contact</a>
@@ -639,6 +762,69 @@
       </div>
     </section>
 
+    <!-- PROJECT GALLERY -->
+    <section id="gallery" class="fade-in">
+      <h2>Project Gallery</h2>
+      <p class="section-subtitle">
+        Visual snapshots of the autonomous systems and robots I have built.
+      </p>
+
+      <div class="gallery-grid">
+
+        <!-- ATV images -->
+        <div class="gallery-item" data-full="assets/atv-1.jpeg" data-caption="Autonomous Unmanned ATV – LiDAR-based obstacle avoidance during field testing.">
+          <img src="assets/atv-1.jpeg" alt="Autonomous ATV test">
+          <div class="gallery-caption">
+            <span>Autonomous ATV</span><br>
+            <span class="gallery-tag">ROS · LiDAR · Pixhawk</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-full="assets/atv-2.jpeg" data-caption="Pixhawk, Arduino–DAC, and PLC integration on the ATV platform.">
+          <img src="assets/atv-2.jpeg" alt="ATV integration">
+          <div class="gallery-caption">
+            <span>ATV Integration</span><br>
+            <span class="gallery-tag">Hardware · PLC</span>
+          </div>
+        </div>
+
+        <!-- Baseball pitching robot -->
+        <div class="gallery-item" data-full="assets/baseball-1.jpeg" data-caption="Autonomous baseball pitching robot aiming at a 3×3 target grid.">
+          <img src="assets/baseball-1.jpeg" alt="Baseball pitching robot">
+          <div class="gallery-caption">
+            <span>Pitching Robot</span><br>
+            <span class="gallery-tag">YOLOv8 · BLDC</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-full="assets/baseball-2.jpeg" data-caption="Dual-wheel BLDC launcher mechanism for controlled ball exit velocity.">
+          <img src="assets/baseball-2.jpeg" alt="BLDC launcher mechanism">
+          <div class="gallery-caption">
+            <span>Launcher Mechanism</span><br>
+            <span class="gallery-tag">Mechanics · Control</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-full="assets/baseball-3.jpeg" data-caption="Side view of the pitching robot and targeting setup.">
+          <img src="assets/baseball-3.jpeg" alt="Pitching robot side view">
+          <div class="gallery-caption">
+            <span>Pitching Setup</span><br>
+            <span class="gallery-tag">System Integration</span>
+          </div>
+        </div>
+
+        <!-- Combat robot -->
+        <div class="gallery-item" data-full="assets/combat-1.jpeg" data-caption="Kiwi-drive combat robot used in TEL Robot Combat 2025.">
+          <img src="assets/combat-1.jpeg" alt="Combat robot">
+          <div class="gallery-caption">
+            <span>Combat Robot</span><br>
+            <span class="gallery-tag">Kiwi Drive · Embedded Control</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- COMPETITIONS -->
     <section id="competitions" class="fade-in">
       <h2>Competitions & Achievements</h2>
@@ -690,6 +876,19 @@
     <footer>
       © <span id="year"></span> Nelo Matse. All rights reserved.
     </footer>
+  </div>
+
+  <!-- IMAGE MODAL OVERLAY -->
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-inner">
+      <div class="image-modal-img-wrap">
+        <img src="" alt="Project image" id="imageModalImg" />
+      </div>
+      <div class="image-modal-caption">
+        <span id="imageModalCaption"></span>
+        <button class="image-modal-close" id="imageModalClose">Close</button>
+      </div>
+    </div>
   </div>
 
   <!-- BACK TO TOP BUTTON -->
@@ -753,7 +952,43 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Image gallery modal
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('imageModalImg');
+    const modalCaption = document.getElementById('imageModalCaption');
+    const modalClose = document.getElementById('imageModalClose');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const fullSrc = item.getAttribute('data-full') || item.querySelector('img').src;
+        const caption =
+          item.getAttribute('data-caption') ||
+          (item.querySelector('.gallery-caption span') ? item.querySelector('.gallery-caption span').textContent : '');
+        modalImg.src = fullSrc;
+        modalCaption.textContent = caption;
+        modal.classList.add('open');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modalImg.src = '';
+      modalCaption.textContent = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
-
