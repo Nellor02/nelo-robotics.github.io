@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name | Engineering & AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      background: #f5f5f5;
+      color: #222;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    header h1 {
+      margin-bottom: 0.3rem;
+    }
+    header p.tagline {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 0;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    nav a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    section h2 {
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 1.5rem;
+    }
+    .project {
+      margin-bottom: 1rem;
+    }
+    .project h3 {
+      margin-bottom: 0.2rem;
+    }
+    .project .meta {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.3rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #eee;
+      border-radius: 999px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+      padding: 2rem 0 1rem;
+    }
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Your English Name</h1>
+      <p class="tagline">Robotics & Computer Vision | Engineering Student</p>
+      <p>
+        <a href="mailto:youremail@example.com">youremail@example.com</a> ·
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+      </p>
+    </header>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#competitions">Competitions</a>
+      <a href="#reports">Reports</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="two-column">
+        <div>
+          <p>
+            I am a final-year student in <strong>Your Program</strong> at <strong>Your University</strong>,
+            focusing on robotics, computer vision, and applied machine learning.
+            I enjoy building full systems that connect mechanical design, control,
+            and perception — from ball-launching robots to autonomous targeting systems.
+          </p>
+          <p>
+            I am currently preparing to apply for a Master's program in engineering,
+            with research interests in <strong>robotics</strong>, <strong>vision-based control</strong>,
+            and <strong>intelligent manufacturing</strong>.
+          </p>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Location:</strong> Tainan, Taiwan</li>
+            <li><strong>Education:</strong> BSc in XXX, Kun Shan University</li>
+            <li><strong>Languages:</strong> English, Chinese</li>
+            <li><strong>Looking for:</strong> 2026 Fall MSc positions</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Programming:</strong> Python, C/C++, MATLAB</li>
+        <li><strong>Machine Learning / CV:</strong> PyTorch, YOLOv8, OpenCV</li>
+        <li><strong>Robotics & Control:</strong> Kinematics, motion planning, control systems, PID</li>
+        <li><strong>Hardware:</strong> Raspberry Pi, NVIDIA Jetson, BLDC motor control, sensors</li>
+        <li><strong>Tools:</strong> Git, Linux, SolidWorks (or other CAD), LaTeX</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+
+      <div class="project">
+        <h3>Autonomous Baseball Launcher for 3×3 Target Grid</h3>
+        <div class="meta">
+          <span class="badge">Computer Vision</span>
+          <span class="badge">Robotics</span>
+          <span class="badge">Python</span>
+          <span class="badge">YOLOv8</span>
+        </div>
+        <p>
+          Designed and implemented a robot that launches foam baseballs into a 3×3 target grid using
+          camera-based target detection, physics-based trajectory planning, and BLDC motor control.
+        </p>
+        <ul>
+          <li>Used a Raspberry Pi Camera and YOLOv8 to localize the target board.</li>
+          <li>Derived projectile equations with spin effects to compute launch angle and wheel speed.</li>
+          <li>Achieved XX% hit rate at 5 m distance in competition tests.</li>
+        </ul>
+        <p>
+          <a href="https://github.com/yourusername/launcher-project" target="_blank">Code</a> ·
+          <a href="https://youtu.be/yourvideo" target="_blank">Video</a> ·
+          <a href="reports/launcher_report.pdf" target="_blank">Report</a>
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Robot Combat System – TEL Competition 2025</h3>
+        <div class="meta">
+          <span class="badge">Embedded</span>
+          <span class="badge">Control</span>
+          <span class="badge">Kiwi Drive</span>
+        </div>
+        <p>
+          Built a holonomic-drive combat robot with omni wheels, integrating perception,
+          motion control, and strategic behavior for the TEL Robot Combat competition.
+        </p>
+        <ul>
+          <li>Implemented Kiwi drive kinematics for omnidirectional movement.</li>
+          <li>Integrated sensors and control loops for precise position control.</li>
+          <li>Collaborated in a team of X members; responsible for Y and Z subsystems.</li>
+        </ul>
+        <p>
+          <a href="https://github.com/yourusername/combat-robot" target="_blank">Code</a> ·
+          <a href="https://youtu.be/yourvideo2" target="_blank">Video</a>
+        </p>
+      </div>
+
+      <!-- Add more project blocks as needed -->
+    </section>
+
+    <section id="competitions">
+      <h2>Competitions & Achievements</h2>
+      <ul>
+        <li><strong>TEL Robot Combat 2025</strong> – Role, result (e.g., finalist / top 8 / etc.)</li>
+        <li><strong>Other Competition</strong> – Brief description & achievement.</li>
+      </ul>
+    </section>
+
+    <section id="reports">
+      <h2>Technical Reports & Documents</h2>
+      <ul>
+        <li><a href="reports/launcher_report.pdf" target="_blank">Projectile Modeling and Control of a Baseball Launcher</a></li>
+        <li><a href="reports/vision_system_report.pdf" target="_blank">Vision-Based Target Detection for Autonomous Launching</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        The best way to reach me is by email:<br />
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+      </p>
+      <p>
+        You can also find my code on <a href="https://github.com/yourusername" target="_blank">GitHub</a>.
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Your Name. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
