@@ -344,6 +344,21 @@
       font-size: 0.88rem;
       margin-right: 0.6rem;
     }
+    /* VIDEO EMBED (PROJECT DEMOS) */
+    .video-wrapper {
+      margin-top: 0.9rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.25);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
 
     /* PROJECT GALLERY */
 
@@ -707,11 +722,17 @@
           <li>Verified algorithms in Gazebo (r1_rover) before deploying to the real ATV platform.</li>
         </ul>
         <p class="project-links">
-          <a href="#" target="_blank">Code (GitHub)</a>
-          <a href="#" target="_blank">Demo Video</a>
-          <a href="#" target="_blank">Technical Report</a>
-        </p>
+        <a href="#" target="_blank">Code (GitHub)</a>
+        <a href="assets/atv_demo.mp4" target="_blank">Demo Video</a>
+        <a href="reports/autonomous_atv.pdf" target="_blank">Technical Report</a>
+      </p>
+      <div class="video-wrapper">
+        <video controls preload="metadata">
+          <source src="assets/atv_demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
+    </div>
 
       <div class="project">
         <h3>Autonomous Baseball Pitching Robot for 3×3 Target Grid</h3>
