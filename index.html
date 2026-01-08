@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Nelo Matse (馬尼駱) | Engineering & AI Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     :root {
       --bg: #f3f5f7;
@@ -25,13 +26,9 @@
       --border-soft: #1f2937;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -46,13 +43,8 @@
       background: radial-gradient(circle at top left, #020617, #020617 40%, #020617);
     }
 
-    a {
-      color: var(--accent);
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
 
     .page-wrapper {
       max-width: 1180px;
@@ -61,7 +53,6 @@
     }
 
     /* HERO / HEADER */
-
     header {
       background: linear-gradient(135deg, #0b7285, #1971c2);
       color: #fff;
@@ -143,12 +134,9 @@
       word-break: break-all;
     }
 
-    header p.links a:hover {
-      text-decoration: underline;
-    }
+    header p.links a:hover { text-decoration: underline; }
 
     /* NAV */
-
     nav {
       margin: 0 auto 2rem;
       text-align: center;
@@ -183,9 +171,7 @@
       transition: background 0.15s, color 0.15s;
     }
 
-    [data-theme="dark"] nav a {
-      color: #e5e7eb;
-    }
+    [data-theme="dark"] nav a { color: #e5e7eb; }
 
     nav a:hover {
       background: var(--accent-soft);
@@ -209,7 +195,6 @@
     }
 
     /* SECTIONS */
-
     section {
       background: var(--bg-alt);
       padding: 1.9rem 1.9rem 1.6rem;
@@ -234,9 +219,7 @@
       border-bottom: 1px solid #edf1f5;
     }
 
-    [data-theme="dark"] section h2 {
-      border-bottom-color: #111827;
-    }
+    [data-theme="dark"] section h2 { border-bottom-color: #111827; }
 
     section h2::before {
       content: "";
@@ -260,12 +243,9 @@
       gap: 1.7rem;
     }
 
-    .two-column ul {
-      margin-top: 0.1rem;
-    }
+    .two-column ul { margin-top: 0.1rem; }
 
     /* SKILLS */
-
     .skills-groups {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -278,30 +258,23 @@
       color: #1f2933;
     }
 
-    [data-theme="dark"] .skills-group h3 {
-      color: #e5e7eb;
-    }
+    [data-theme="dark"] .skills-group h3 { color: #e5e7eb; }
 
     .skills-group ul {
       margin-top: 0.15rem;
       padding-left: 1.1rem;
     }
 
-    .skills-group li {
-      margin-bottom: 0.2rem;
-    }
+    .skills-group li { margin-bottom: 0.2rem; }
 
     /* PROJECTS */
-
     .project {
       margin-bottom: 1.4rem;
       padding-bottom: 1.1rem;
       border-bottom: 1px dashed #e3e7ee;
     }
 
-    [data-theme="dark"] .project {
-      border-bottom-color: #111827;
-    }
+    [data-theme="dark"] .project { border-bottom-color: #111827; }
 
     .project:last-of-type {
       border-bottom: none;
@@ -336,35 +309,80 @@
       border-color: rgba(148, 233, 255, 0.4);
     }
 
-    .project ul {
-      margin-top: 0.3rem;
-    }
+    .project ul { margin-top: 0.3rem; }
 
     .project-links a {
       font-size: 0.88rem;
       margin-right: 0.6rem;
     }
-    /* VIDEO EMBED (PROJECT DEMOS) */
-    .video-wrapper {
-      margin-top: 0.9rem;
+
+    /* FAST VIDEO PREVIEW (fixes slow loads + huge space) */
+    .video-card {
+      margin-top: 0.8rem;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(15,23,42,0.25);
+      border: 1px solid var(--border-soft);
+      background: #0b1220;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.18);
+      max-width: 760px; /* prevents full-screen feeling */
     }
 
-    .video-wrapper video {
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9; /* keeps layout stable */
+      background: #0b1220;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.92;
+      filter: saturate(1.05);
+    }
+
+    .video-play-btn {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(15,23,42,0.85);
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .video-play-btn:hover { background: rgba(15,23,42,0.95); }
+
+    .video-note {
+      padding: 0.55rem 0.85rem 0.75rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88rem;
+    }
+
+    .video-embed { display: none; }
+
+    .video-card.is-playing .video-thumb,
+    .video-card.is-playing .video-note { display: none; }
+
+    .video-card.is-playing .video-embed { display: block; }
+
+    .video-embed video {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 12px;
+      background: #000;
     }
-
 
     /* PROJECT GALLERY */
-
-    #gallery .section-subtitle {
-      margin-bottom: 1.2rem;
-    }
+    #gallery .section-subtitle { margin-bottom: 1.2rem; }
 
     .gallery-grid {
       display: grid;
@@ -414,7 +432,6 @@
     }
 
     /* IMAGE MODAL */
-
     .image-modal {
       position: fixed;
       inset: 0;
@@ -426,9 +443,7 @@
       padding: 1rem;
     }
 
-    .image-modal.open {
-      display: flex;
-    }
+    .image-modal.open { display: flex; }
 
     .image-modal-inner {
       max-width: 960px;
@@ -441,9 +456,7 @@
       border: 1px solid #1e293b;
     }
 
-    .image-modal-img-wrap {
-      background: #000;
-    }
+    .image-modal-img-wrap { background: #000; }
 
     .image-modal img {
       width: 100%;
@@ -463,9 +476,7 @@
       gap: 0.75rem;
     }
 
-    .image-modal-caption span {
-      opacity: 0.9;
-    }
+    .image-modal-caption span { opacity: 0.9; }
 
     .image-modal-close {
       border: none;
@@ -478,12 +489,9 @@
       white-space: nowrap;
     }
 
-    .image-modal-close:hover {
-      background: #b91c1c;
-    }
+    .image-modal-close:hover { background: #b91c1c; }
 
     /* COMPETITIONS */
-
     #competitions ul {
       list-style: none;
       padding-left: 0;
@@ -501,16 +509,10 @@
     }
 
     /* REPORTS */
-
-    #reports ul {
-      margin-top: 0.2rem;
-    }
+    #reports ul { margin-top: 0.2rem; }
 
     /* CONTACT & FOOTER */
-
-    #contact p {
-      margin-top: 0.3rem;
-    }
+    #contact p { margin-top: 0.3rem; }
 
     footer {
       text-align: center;
@@ -519,12 +521,9 @@
       padding: 2rem 0 1.7rem;
     }
 
-    [data-theme="dark"] footer {
-      color: #9ca3af;
-    }
+    [data-theme="dark"] footer { color: #9ca3af; }
 
     /* ANIMATIONS */
-
     .fade-in {
       opacity: 0;
       transform: translateY(18px);
@@ -537,7 +536,6 @@
     }
 
     /* BACK TO TOP */
-
     .back-to-top {
       position: fixed;
       right: 1.5rem;
@@ -554,26 +552,18 @@
       z-index: 50;
     }
 
-    .back-to-top.show {
-      display: inline-block;
-    }
+    .back-to-top.show { display: inline-block; }
 
     @media (max-width: 768px) {
-      .two-column {
-        grid-template-columns: 1fr;
-      }
-      .skills-groups {
-        grid-template-columns: 1fr;
-      }
-      nav .nav-inner {
-        border-radius: 14px;
-      }
-      header {
-        padding: 2rem 1.3rem 1.7rem;
-      }
+      .two-column { grid-template-columns: 1fr; }
+      .skills-groups { grid-template-columns: 1fr; }
+      nav .nav-inner { border-radius: 14px; }
+      header { padding: 2rem 1.3rem 1.7rem; }
+      .video-card { max-width: 100%; }
     }
   </style>
 </head>
+
 <body data-theme="light">
   <div class="page-wrapper">
     <!-- HERO -->
@@ -588,8 +578,8 @@
         </p>
         <p class="links">
           <a href="mailto:nellorchamp@gmail.com">nellorchamp@gmail.com</a> ·
-          <a href="https://github.com/Nellor02" target="_blank">github.com/Nellor02</a> ·
-          <a href="https://www.linkedin.com/in/nelo-matse" target="_blank">linkedin.com/in/nelo-matse</a>
+          <a href="https://github.com/Nellor02" target="_blank" rel="noopener">github.com/Nellor02</a> ·
+          <a href="https://www.linkedin.com/in/nelo-matse" target="_blank" rel="noopener">linkedin.com/in/nelo-matse</a>
         </p>
       </div>
     </header>
@@ -604,7 +594,7 @@
         <a href="#competitions">Competitions</a>
         <a href="#reports">Reports</a>
         <a href="#contact">Contact</a>
-        <button class="theme-toggle" id="themeToggle">Dark mode</button>
+        <button class="theme-toggle" id="themeToggle" type="button">Dark mode</button>
       </div>
     </nav>
 
@@ -654,7 +644,7 @@
 
       <div class="skills-groups">
         <div class="skills-group">
-          <h3>Programming & Software</h3>
+          <h3>Programming &amp; Software</h3>
           <ul>
             <li>Python, C/C++, MATLAB</li>
             <li>ROS Noetic (multi-node systems, RViz, roslaunch)</li>
@@ -663,9 +653,9 @@
             <li>Git, Linux, VS Code, LaTeX</li>
           </ul>
 
-          <h3>Machine Learning & Computer Vision</h3>
+          <h3>Machine Learning &amp; Computer Vision</h3>
           <ul>
-            <li>YOLOv8 detection & tracking</li>
+            <li>YOLOv8 detection &amp; tracking</li>
             <li>OpenCV (calibration, thresholding, perspective transforms)</li>
             <li>Dataset preparation and model fine-tuning</li>
             <li>Basic experience with PyTorch / TensorFlow workflows</li>
@@ -673,7 +663,7 @@
         </div>
 
         <div class="skills-group">
-          <h3>Autonomous Systems & Robotics</h3>
+          <h3>Autonomous Systems &amp; Robotics</h3>
           <ul>
             <li>ROS–Pixhawk–MAVROS integration (MAVLink communication)</li>
             <li>ArduPilot / ArduRover control (AUTO, MANUAL, mode switching)</li>
@@ -683,14 +673,14 @@
             <li>Projectile physics modeling (launch angle, drag, spin effects)</li>
           </ul>
 
-          <h3>Embedded & Hardware</h3>
+          <h3>Embedded &amp; Hardware</h3>
           <ul>
             <li>Pixhawk 6C flight controller (PWM, mission planning, telemetry)</li>
             <li>Quanergy M8 3D LiDAR (TOF sensing, <code>/pointcloud2</code> integration)</li>
             <li>PLC control (ladder logic, analog voltage interpretation)</li>
             <li>Arduino Mega 2560 (PWM capture + I²C DAC communication)</li>
             <li>DAC systems (0–5 V mapping into PLC control loops)</li>
-            <li>Raspberry Pi & NVIDIA Jetson platforms</li>
+            <li>Raspberry Pi &amp; NVIDIA Jetson platforms</li>
             <li>BLDC motor control, ESC tuning, sensor integration</li>
           </ul>
         </div>
@@ -721,18 +711,23 @@
           <li>Designed a hardware chain (Pixhawk PWM → Arduino measurement → DAC voltage → PLC) to drive industrial AC servo motors.</li>
           <li>Verified algorithms in Gazebo (r1_rover) before deploying to the real ATV platform.</li>
         </ul>
+
         <p class="project-links">
-        <a href="#" target="_blank">Code (GitHub)</a>
-        <a href="assets/atv_demo.mp4" target="_blank">Demo Video</a>
-        <a href="reports/autonomous_atv.pdf" target="_blank">Technical Report</a>
-      </p>
-      <div class="video-wrapper">
-        <video controls preload="metadata">
-          <source src="assets/atv_demo.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+          <a href="#" target="_blank" rel="noopener">Code (GitHub)</a>
+          <a href="assets/atv_demo.mp4" target="_blank" rel="noopener">Demo Video</a>
+          <a href="reports/autonomous_atv.pdf" target="_blank" rel="noopener">Technical Report</a>
+        </p>
+
+        <!-- Fast preview: loads MP4 only when clicked -->
+        <div class="video-card" data-video="assets/atv_demo.mp4">
+          <div class="video-thumb">
+            <img src="assets/atv-1.jpeg" alt="ATV demo preview">
+            <button class="video-play-btn" type="button">Play demo</button>
+          </div>
+          <div class="video-note">Loads on click for faster browsing. If playback is slow, use the “Demo Video” link above.</div>
+          <div class="video-embed"></div>
+        </div>
       </div>
-    </div>
 
       <div class="project">
         <h3>Autonomous Baseball Pitching Robot for 3×3 Target Grid</h3>
@@ -753,16 +748,21 @@
           <li>Controlled dual high-speed BLDC wheels (~3000 RPM) with feedback for consistent exit velocity.</li>
           <li>Computed angle offsets and trigger timing in real time to achieve accurate shots into specified grid cells.</li>
         </ul>
+
         <p class="project-links">
-          <a href="#" target="_blank">Code (GitHub)</a>
-          <a href="assets/robot_demo.mp4" target="_blank">Competition Video</a>
-          <a href="reports/launcher_report.pdf" target="_blank">Launcher Report</a>
+          <a href="#" target="_blank" rel="noopener">Code (GitHub)</a>
+          <a href="assets/robot_demo.mp4" target="_blank" rel="noopener">Competition Video</a>
+          <a href="reports/launcher_report.pdf" target="_blank" rel="noopener">Launcher Report</a>
         </p>
-        <div class="video-wrapper">
-          <video controls preload="metadata">
-            <source src="assets/robot_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+
+        <!-- Fast preview: loads MP4 only when clicked -->
+        <div class="video-card" data-video="assets/robot_demo.mp4">
+          <div class="video-thumb">
+            <img src="assets/baseball-1.jpeg" alt="Competition video preview">
+            <button class="video-play-btn" type="button">Play competition video</button>
+          </div>
+          <div class="video-note">Loads on click for faster browsing. If playback is slow, use the “Competition Video” link above.</div>
+          <div class="video-embed"></div>
         </div>
       </div>
 
@@ -782,15 +782,20 @@
           <li>Integrated sensors and control loops for precise position control under dynamic competition conditions.</li>
           <li>Collaborated in a multidisciplinary team and took responsibility for motion control and systems integration.</li>
         </ul>
+
         <p class="project-links">
-          <a href="#" target="_blank">Code (GitHub)</a>
-          <a href="assets/robot_demo.mp4" target="_blank">Robot Demo Video</a>
+          <a href="#" target="_blank" rel="noopener">Code (GitHub)</a>
+          <a href="assets/robot_demo.mp4" target="_blank" rel="noopener">Robot Demo Video</a>
         </p>
-        <div class="video-wrapper">
-          <video controls preload="metadata">
-            <source src="assets/robot_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+
+        <!-- Fast preview: loads MP4 only when clicked -->
+        <div class="video-card" data-video="assets/robot_demo.mp4">
+          <div class="video-thumb">
+            <img src="assets/combat-1.jpeg" alt="Robot demo preview">
+            <button class="video-play-btn" type="button">Play robot demo</button>
+          </div>
+          <div class="video-note">Loads on click for faster browsing. If playback is slow, use the “Robot Demo Video” link above.</div>
+          <div class="video-embed"></div>
         </div>
       </div>
     </section>
@@ -803,7 +808,6 @@
       </p>
 
       <div class="gallery-grid">
-
         <!-- ATV images -->
         <div class="gallery-item" data-full="assets/atv-1.jpeg" data-caption="Autonomous Unmanned ATV – LiDAR-based obstacle avoidance during field testing.">
           <img src="assets/atv-1.jpeg" alt="Autonomous ATV test">
@@ -854,7 +858,6 @@
             <span class="gallery-tag">Kiwi Drive · Embedded Control</span>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -863,14 +866,14 @@
       <h2>Competitions & Achievements</h2>
       <ul>
         <li>
-          <strong>Waanrun 2025 Innovation Competition (萬潤2025創新創意競賽)</strong> — 
+          <strong>Waanrun 2025 Innovation Competition (萬潤2025創新創意競賽)</strong> —
           <em>3rd Place, Autonomous Unmanned ATV</em><br />
           Recognized among national universities and technical colleges. The project integrated
           ROS Noetic, Pixhawk 6C, Quanergy M8 LiDAR, Arduino–DAC conversion, and PLC motor control
           into a robust autonomous ATV platform.
         </li>
         <li>
-          <strong>TEL Robot Combat 2025</strong> — 
+          <strong>TEL Robot Combat 2025</strong> —
           <em>Autonomous Baseball Pitching Robot & Kiwi-Drive Combat Robot</em><br />
           Developed a YOLOv8-based pitching robot for a 3×3 target challenge and a Kiwi-drive
           combat base, showcasing full-stack integration from perception to actuation.
@@ -882,9 +885,9 @@
     <section id="reports" class="fade-in">
       <h2>Technical Reports & Documents</h2>
       <ul>
-        <li><a href="reports/autonomous_atv.pdf" target="_blank">Autonomous Unmanned ATV – ROS · Pixhawk · PLC Integration</a></li>
-        <li><a href="reports/launcher_report.pdf" target="_blank">Projectile Modeling and Control of a Baseball Launcher</a></li>
-        <li><a href="reports/launcher_report.pdf" target="_blank">Vision-Based Target Detection for Autonomous Pitching</a></li>
+        <li><a href="reports/autonomous_atv.pdf" target="_blank" rel="noopener">Autonomous Unmanned ATV – ROS · Pixhawk · PLC Integration</a></li>
+        <li><a href="reports/launcher_report.pdf" target="_blank" rel="noopener">Projectile Modeling and Control of a Baseball Launcher</a></li>
+        <li><a href="reports/launcher_report.pdf" target="_blank" rel="noopener">Vision-Based Target Detection for Autonomous Pitching</a></li>
       </ul>
       <p class="section-subtitle">
         These are my <code>reports/</code> reports for the projects I have worked on.
@@ -900,9 +903,9 @@
       </p>
       <p>
         You can also find my code and ongoing work on
-        <a href="https://github.com/Nellor02" target="_blank">GitHub</a>,
+        <a href="https://github.com/Nellor02" target="_blank" rel="noopener">GitHub</a>,
         or connect with me on
-        <a href="https://www.linkedin.com/in/nelo-matse" target="_blank">LinkedIn</a>.
+        <a href="https://www.linkedin.com/in/nelo-matse" target="_blank" rel="noopener">LinkedIn</a>.
       </p>
     </section>
 
@@ -919,13 +922,13 @@
       </div>
       <div class="image-modal-caption">
         <span id="imageModalCaption"></span>
-        <button class="image-modal-close" id="imageModalClose">Close</button>
+        <button class="image-modal-close" id="imageModalClose" type="button">Close</button>
       </div>
     </div>
   </div>
 
   <!-- BACK TO TOP BUTTON -->
-  <button class="back-to-top" id="backToTop">Top</button>
+  <button class="back-to-top" id="backToTop" type="button">Top</button>
 
   <script>
     // Year in footer
@@ -949,18 +952,13 @@
     function setTheme(theme) {
       rootHtml.setAttribute('data-theme', theme);
       themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
-      try {
-        localStorage.setItem('theme', theme);
-      } catch (e) {}
+      try { localStorage.setItem('theme', theme); } catch (e) {}
     }
 
     // Load stored theme if exists
     let storedTheme;
-    try {
-      storedTheme = localStorage.getItem('theme');
-    } catch (e) {
-      storedTheme = null;
-    }
+    try { storedTheme = localStorage.getItem('theme'); } catch (e) { storedTheme = null; }
+
     if (storedTheme === 'dark' || storedTheme === 'light') {
       setTheme(storedTheme);
     } else {
@@ -1012,15 +1010,41 @@
 
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
+      if (e.target === modal) closeModal();
     });
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
-        closeModal();
-      }
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    // Click-to-load videos (prevents slow page load on GitHub Pages)
+    document.querySelectorAll('.video-card').forEach(card => {
+      const btn = card.querySelector('.video-play-btn');
+      const embed = card.querySelector('.video-embed');
+      const videoSrc = card.getAttribute('data-video');
+
+      if (!btn || !embed || !videoSrc) return;
+
+      btn.addEventListener('click', () => {
+        if (card.classList.contains('is-playing')) return;
+
+        const video = document.createElement('video');
+        video.controls = true;
+        video.preload = 'metadata';
+        video.playsInline = true;
+
+        const source = document.createElement('source');
+        source.src = videoSrc;
+        source.type = 'video/mp4';
+
+        video.appendChild(source);
+        embed.appendChild(video);
+
+        card.classList.add('is-playing');
+
+        // attempt autoplay after click (allowed by browsers)
+        video.play().catch(() => {});
+      });
     });
   </script>
 </body>
